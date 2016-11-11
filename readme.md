@@ -49,6 +49,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-immediate](https://github.com/sindresorhus/p-immediate)**: Returns a promise resolved in the next event loop - think `setImmediate()`
 - **[p-time](https://github.com/sindresorhus/p-time)**: Measure the time a promise takes to resolve
 - **[p-defer](https://github.com/sindresorhus/p-defer)**: Create a deferred promise
+- **[p-break](https://github.com/sindresorhus/p-break)**: Break out of a promise chain
 - **[loud-rejection](https://github.com/sindresorhus/loud-rejection)**: Make unhandled promise rejections fail loudly instead of the default silent fail
 - **[hard-rejection](https://github.com/sindresorhus/hard-rejection)**: Make unhandled promise rejections fail hard right away instead of the default silent fail
 
@@ -90,6 +91,39 @@ Instead, use an [async function](https://jakearchibald.com/2014/es7-async-functi
 ```js
 const [r1, r2, r3] = await Promise.all([p1, p2, p3]);
 // …
+```
+
+### How do I break out of a promise chain?
+
+You might think you want to break out ("return early") when doing conditional logic in promise chains.
+
+Here you would like to only run the `onlyRunConditional` promises if `conditional` is truthy.
+
+```js
+alwaysRun1()
+	.then(() => alwaysRun2())
+	.then(conditional => conditional || somehowBreakTheChain())
+	.then(() => onlyRunConditional1())
+	.then(() => onlyRunConditional2())
+	.then(() => onlyRunConditional3())
+	.then(() => onlyRunConditional4())
+	.then(() => alwaysRun3());
+```
+
+You could implement the above by [abusing the promise rejection mechanism](https://github.com/sindresorhus/p-break). However, it would be better to branch out the chain instead. Promises can not only be chained, but also nested and unnested.
+
+```js
+const runConditional = conditional =>
+	Promise.resolve(conditional)
+		.then(() => onlyRunConditional1())
+		.then(() => onlyRunConditional2())
+		.then(() => onlyRunConditional3())
+		.then(() => onlyRunConditional4());
+
+alwaysRun1()
+	.then(() => alwaysRun2())
+	.then(conditional => conditional && runConditional(conditional))
+	.then(() => alwaysRun3());
 ```
 
 
