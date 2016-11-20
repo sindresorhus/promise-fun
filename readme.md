@@ -31,6 +31,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-retry](https://github.com/sindresorhus/p-retry)**: Retry a promise-returning or async function
 - **[p-any](https://github.com/sindresorhus/p-any)**: Wait for any promise to be fulfilled
 - **[p-some](https://github.com/sindresorhus/p-some)**: Wait for a specified number of promises to be fulfilled
+- **[p-locate](https://github.com/sindresorhus/p-locate)**: Get the first fulfilled promise that satisfies the provided testing function
 - **[p-limit](https://github.com/sindresorhus/p-limit)**: Run multiple promise-returning & async functions with limited concurrency
 - **[p-memoize](https://github.com/sindresorhus/p-memoize)**: Memoize promise-returning & async functions
 - **[p-pipe](https://github.com/sindresorhus/p-pipe)**: Compose promise-returning & async functions into a reusable pipeline
