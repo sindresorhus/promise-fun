@@ -33,6 +33,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-some](https://github.com/sindresorhus/p-some)**: Wait for a specified number of promises to be fulfilled
 - **[p-locate](https://github.com/sindresorhus/p-locate)**: Get the first fulfilled promise that satisfies the provided testing function
 - **[p-limit](https://github.com/sindresorhus/p-limit)**: Run multiple promise-returning & async functions with limited concurrency
+- **[p-series](https://github.com/sindresorhus/p-series)**: Run promise-returning & async functions in series
 - **[p-memoize](https://github.com/sindresorhus/p-memoize)**: Memoize promise-returning & async functions
 - **[p-pipe](https://github.com/sindresorhus/p-pipe)**: Compose promise-returning & async functions into a reusable pipeline
 - **[p-props](https://github.com/sindresorhus/p-props)**: Like `Promise.all()` but for `Map` and `Object`
