@@ -64,6 +64,52 @@ I intend to use this space to document my promise modules, useful promise patter
 
 ## FAQ
 
+### How can I reduce nesting?
+
+Let's say you want to fetch some data, process it, and return both the data and the processed data.
+
+The common approach would be to nest the promises:
+
+```js
+const getData = id =>
+	Storage
+		.find(id)
+		.then(data => {
+			return process(data).then(result => {
+				return prepare(data, result);
+			});
+		});
+```
+
+But we can take advantage of `Promise.all`:
+
+```js
+const getData = id =>
+	Storage
+		.find(id)
+		.then(data => Promise.all([data, process(data)])
+		.then(([data, result]) => prepare(data, result));
+```
+
+In this case, it can be simplified further:
+
+```js
+const getData = id =>
+	Storage
+		.find(id)
+		.then(data => Promise.all([data, process(data)])
+		.then(value => prepare(...value));
+```
+
+And even simpler with [async functions](http://www.2ality.com/2016/02/async-functions.html): *(Requires Babel or Node.js 8)*
+
+```js
+const getData = async id => {
+	const data = await Storage.find(id);
+	return prepare(data, await process(data));
+};
+```
+
 ### What about something like [`Bluebird#spread()`](http://bluebirdjs.com/docs/api/spread.html)?
 
 Bluebird:
