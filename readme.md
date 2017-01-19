@@ -91,16 +91,6 @@ const getData = id =>
 		.then(([data, result]) => prepare(data, result));
 ```
 
-In this case, it can be simplified further:
-
-```js
-const getData = id =>
-	Storage
-		.find(id)
-		.then(data => Promise.all([data, process(data)])
-		.then(value => prepare(...value));
-```
-
 And even simpler with [async functions](http://www.2ality.com/2016/02/async-functions.html): *(Requires Babel or Node.js 8)*
 
 ```js
