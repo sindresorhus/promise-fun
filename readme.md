@@ -64,6 +64,33 @@ I intend to use this space to document my promise modules, useful promise patter
 
 ## FAQ
 
+### How can I run 100 promises with only 5 promises running at once?
+
+This is a good use-case for [`p-map`](https://github.com/sindresorhus/p-map). You might ask why you can't just specify an array of promises. Promises are eager, so by the time `p-map` starts reading the array, all the promises have already started running. `p-map` works by executing a promise-returning function in a mapper function. This way the promises are created lazily and can be concurrency limited. Check out [`p-all`](https://github.com/sindresorhus/p-all) instead if you're using different functions to get each promise.
+
+```js
+const pMap = require('p-map');
+
+const urls = [
+	'sindresorhus.com',
+	'ava.li',
+	'github.com',
+	…
+];
+
+console.log(urls.length);
+//=> 100
+
+const mapper = url => {
+	return fetchStats(url); //=> Promise
+};
+
+pMap(urls, mapper, {concurrency: 5}).then(result => {
+	console.log(result);
+	//=> [{url: 'sindresorhus.com', stats: {…}}, …]
+});
+```
+
 ### How can I reduce nesting?
 
 Let's say you want to fetch some data, process it, and return both the data and the processed data.
