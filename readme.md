@@ -24,6 +24,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-if](https://github.com/sindresorhus/p-if)**: Conditional promise chains
 - **[p-tap](https://github.com/sindresorhus/p-tap)**: Tap into a promise chain without affecting its value or state
 - **[p-log](https://github.com/sindresorhus/p-log)**: Log the value/error of a promise
+- **[p-event](https://github.com/sindresorhus/p-event)**: Promisify an event by waiting for it to be emitted
 - **[p-debounce](https://github.com/sindresorhus/p-debounce)**: Debounce promise-returning & async functions
 - **[p-throttle](https://github.com/sindresorhus/p-throttle)**: Throttle promise-returning & async functions
 - **[p-timeout](https://github.com/sindresorhus/p-timeout)**: Timeout a promise after a specified amount of time
