@@ -136,7 +136,7 @@ Bluebird:
 Promise.resolve([1, 2])
 	.then(getUserLoginCount)
 	.spread((one, two) => {
-		console.log(one, two); //=> 1 2
+		console.log(one, two); //=> 10 20
 	});
 ```
 
@@ -145,8 +145,8 @@ Instead, use [destructuring](https://developer.mozilla.org/en/docs/Web/JavaScrip
 ```js
 Promise.resolve([1, 2])
 	.then(getUserLoginCount)
-	..all().then((one, two) => {
-		console.log(one, two); //=> 1 2
+	.all().then(([one, two]) => {
+		console.log(one, two); //=> 10 20
 	});
 ```
 
