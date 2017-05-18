@@ -128,6 +128,17 @@ const getData = async id => {
 };
 ```
 
+Here we flatten things out using [another style](https://github.com/justsml/escape-from-callback-mountain), eliminating hardcoded async expressions from inside (most of) your logical code (i.e. `await` above). `getResults` and `processData` are 
+
+```js
+const getResults = data => Promise.all([data, process(data)]
+
+const getData = id => Storage
+	.find(id)
+	.all().then(getResults)
+	.all().then(prepare);
+```
+
 ### What about something like [`Bluebird#spread()`](http://bluebirdjs.com/docs/api/spread.html)?
 
 Bluebird:
