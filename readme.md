@@ -133,21 +133,26 @@ const getData = async id => {
 Bluebird:
 
 ```js
-Promise.resolve([1, 2])
-	.then(getUserLoginCount)
-	.spread((one, two) => {
-		console.log(one, two); //=> 10 20
-	});
+const getLoginData = ids =>
+	Promise.resolve(ids)
+		.then(getUserLoginCount)
+		.spread((...counts) => {
+			console.log(counts); //=> 10 20
+			return [ids, counts] 
+		});
 ```
 
 Instead, use [destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
 
 ```js
-Promise.resolve([1, 2])
-	.then(getUserLoginCount)
-	.all().then(([one, two]) => {
-		console.log(one, two); //=> 10 20
-	});
+const getLoginData = ids =>
+	Promise.resolve(ids)
+		.then(getUserLoginCount)
+		.then(results => Promise.all(results))
+		.then(counts => {
+			console.log(counts); //=> 10 20
+			return [ids, counts] 
+		});
 ```
 
 ### What about something like [`Bluebird.join()`](http://bluebirdjs.com/docs/api/promise.join.html)?
