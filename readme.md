@@ -128,7 +128,7 @@ const getData = async id => {
 };
 ```
 
-Here we flatten things out using [another style](https://github.com/justsml/escape-from-callback-mountain), eliminating hardcoded async expressions from inside (most of) your logical code (i.e. `await` above). `getResults` and `processData` are 
+Here we flatten things out using [another style](https://github.com/justsml/escape-from-callback-mountain), eliminating hardcoded async expressions from inside (most of) your logical code (i.e. `await` above).
 
 ```js
 const getResults = data => Promise.all([data, process(data)]
