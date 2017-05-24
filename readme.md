@@ -44,6 +44,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-filter](https://github.com/sindresorhus/p-filter)**: Filter promises concurrently
 - **[p-reduce](https://github.com/sindresorhus/p-reduce)**: Reduce a list of values using promises into a promise for a value
 - **[p-settle](https://github.com/sindresorhus/p-settle)**: Settle promises concurrently and get their fulfillment value or rejection reason
+- **[p-every](https://github.com/kevva/p-every)**: Test whether all promises passes a testing function
 - **[p-map-series](https://github.com/sindresorhus/p-map-series)**: Map over promises serially
 - **[p-each-series](https://github.com/sindresorhus/p-each-series)**: Iterate over promises serially
 - **[p-times](https://github.com/sindresorhus/p-times)**: Run promise-returning & async functions a specific number of times concurrently
