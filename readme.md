@@ -188,16 +188,15 @@ alwaysRun1()
 You could implement the above by [abusing the promise rejection mechanism](https://github.com/sindresorhus/p-break). However, it would be better to branch out the chain instead. Promises can not only be chained, but also nested and unnested.
 
 ```js
-const runConditional = conditional =>
-	Promise.resolve(conditional)
-		.then(() => onlyRunConditional1())
+const runConditional = () =>
+	onlyRunConditional1()
 		.then(() => onlyRunConditional2())
 		.then(() => onlyRunConditional3())
 		.then(() => onlyRunConditional4());
 
 alwaysRun1()
 	.then(() => alwaysRun2())
-	.then(conditional => conditional && runConditional(conditional))
+	.then(conditional => conditional && runConditional())
 	.then(() => alwaysRun3());
 ```
 
