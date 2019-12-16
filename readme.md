@@ -2,18 +2,14 @@
 
 I intend to use this space to document my promise modules, useful promise patterns, and how to solve common problems. For now though, you can see all my promise modules below.
 
-**Star this repo to show your interest, so I can know whether to prioritize this work.**
-
-
 ## Contents
 
 - [Packages](#packages)
 - [FAQ](#faq)
 
-
 ## Packages
 
-*Not accepting additions, but happy to [take requests & answer questions](https://gitter.im/promisefun/Lobby).*
+*Not accepting additions, but happy to take requests.*
 
 - **[pify](https://github.com/sindresorhus/pify)**: Promisify a callback-style function
 - **[delay](https://github.com/sindresorhus/delay)**: Delay a promise a specified amount of time
@@ -65,7 +61,6 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-is-promise](https://github.com/sindresorhus/p-is-promise)**: Check if something is a promise
 - **[loud-rejection](https://github.com/sindresorhus/loud-rejection)**: Make unhandled promise rejections fail loudly instead of the default silent fail
 - **[hard-rejection](https://github.com/sindresorhus/hard-rejection)**: Make unhandled promise rejections fail hard right away instead of the default silent fail
-
 
 ## FAQ
 
@@ -200,8 +195,3 @@ alwaysRun1()
 	.then(conditional => conditional && runConditional())
 	.then(() => alwaysRun3());
 ```
-
-
-## License
-
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
