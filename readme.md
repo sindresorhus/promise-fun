@@ -69,7 +69,7 @@ I intend to use this space to document my promise modules, useful promise patter
 
 ## FAQ
 
-### How can I run 100 promise returning functions with only 5 running at once?
+### How can I run 100 async/promise-returning functions with only 5 running at once?
 
 This is a good use-case for [`p-map`](https://github.com/sindresorhus/p-map). You might ask why you can't just specify an array of promises. Promises represent values of a computation and not the computation itself - they are eager. So by the time `p-map` starts reading the array, all the actions creating those promises have already started running. `p-map` works by executing a promise-returning function in a mapper function. This way the promises are created lazily and can be concurrency limited. Check out [`p-all`](https://github.com/sindresorhus/p-all) instead if you're using different functions to get each promise.
 
