@@ -118,7 +118,7 @@ const getData = id =>
 		.then(([data, result]) => prepare(data, result));
 ```
 
-And even simpler with [async functions](http://www.2ality.com/2016/02/async-functions.html): *(Requires Babel or Node.js 8)*
+And even simpler with [async functions](https://www.2ality.com/2016/02/async-functions.html): *(Requires Babel or Node.js 8)*
 
 ```js
 const getData = async id => {
