@@ -1,4 +1,4 @@
-# promise-fun [![Gitter](https://badges.gitter.im/join_chat.svg)](https://gitter.im/promisefun/Lobby)
+# promise-fun
 
 I intend to use this space to document my promise modules, useful promise patterns, and how to solve common problems. For now though, you can see all my promise modules below.
 
@@ -73,9 +73,9 @@ This is a good use-case for [`p-map`](https://github.com/sindresorhus/p-map). Yo
 const pMap = require('p-map');
 
 const urls = [
-	'sindresorhus.com',
-	'ava.li',
-	'github.com',
+	'https://sindresorhus.com',
+	'https://avajs.dev',
+	'https://github.com',
 	…
 ];
 
@@ -88,7 +88,7 @@ const mapper = url => {
 
 pMap(urls, mapper, {concurrency: 5}).then(result => {
 	console.log(result);
-	//=> [{url: 'sindresorhus.com', stats: {…}}, …]
+	//=> [{url: 'https://sindresorhus.com', stats: {…}}, …]
 });
 ```
 
