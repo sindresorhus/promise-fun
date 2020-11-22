@@ -59,8 +59,6 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-defer](https://github.com/sindresorhus/p-defer)**: Create a deferred promise
 - **[p-break](https://github.com/sindresorhus/p-break)**: Break out of a promise chain
 - **[p-is-promise](https://github.com/sindresorhus/p-is-promise)**: Check if something is a promise
-- **[loud-rejection](https://github.com/sindresorhus/loud-rejection)**: Make unhandled promise rejections fail loudly instead of the default silent fail
-- **[hard-rejection](https://github.com/sindresorhus/hard-rejection)**: Make unhandled promise rejections fail hard right away instead of the default silent fail
 - **[make-synchronous](https://github.com/sindresorhus/make-synchronous)**: Make an asynchronous function synchronous
 
 ## FAQ
