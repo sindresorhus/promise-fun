@@ -59,6 +59,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-defer](https://github.com/sindresorhus/p-defer)**: Create a deferred promise
 - **[p-break](https://github.com/sindresorhus/p-break)**: Break out of a promise chain
 - **[p-is-promise](https://github.com/sindresorhus/p-is-promise)**: Check if something is a promise
+- **[p-state](https://github.com/sindresorhus/p-state) - Inspect the state of a promise
 - **[make-synchronous](https://github.com/sindresorhus/make-synchronous)**: Make an asynchronous function synchronous
 
 ## FAQ
