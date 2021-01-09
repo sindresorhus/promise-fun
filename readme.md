@@ -13,6 +13,7 @@ I intend to use this space to document my promise modules, useful promise patter
 
 - **[pify](https://github.com/sindresorhus/pify)**: Promisify a callback-style function
 - **[delay](https://github.com/sindresorhus/delay)**: Delay a promise a specified amount of time
+- **[yoctodelay](https://github.com/sindresorhus/yoctodelay)**: Delay a promise a specified amount of time
 - **[p-map](https://github.com/sindresorhus/p-map)**: Map over promises concurrently
 - **[p-all](https://github.com/sindresorhus/p-all)**: Run promise-returning & async functions concurrently with optional limited concurrency
 - **[p-queue](https://github.com/sindresorhus/p-queue)**: Promise queue with concurrency control
