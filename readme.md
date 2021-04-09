@@ -25,7 +25,6 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-debounce](https://github.com/sindresorhus/p-debounce)**: Debounce promise-returning & async functions
 - **[p-throttle](https://github.com/sindresorhus/p-throttle)**: Throttle promise-returning & async functions
 - **[p-timeout](https://github.com/sindresorhus/p-timeout)**: Timeout a promise after a specified amount of time
-- **[p-finally](https://github.com/sindresorhus/p-finally)**: `Promise#finally()` ponyfill - Invoked when the promise is settled regardless of outcome
 - **[p-retry](https://github.com/sindresorhus/p-retry)**: Retry a promise-returning or async function
 - **[p-any](https://github.com/sindresorhus/p-any)**: Wait for any promise to be fulfilled
 - **[p-some](https://github.com/sindresorhus/p-some)**: Wait for a specified number of promises to be fulfilled
