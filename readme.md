@@ -57,7 +57,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-state](https://github.com/sindresorhus/p-state)**: Inspect the state of a promise
 - **[make-synchronous](https://github.com/sindresorhus/make-synchronous)**: Make an asynchronous function synchronous
 
-### `.then`/`.catch` based
+### `.then`/`.catch`-based packages
 
 *You should generally avoid using `.then` except in edge cases.*
 
