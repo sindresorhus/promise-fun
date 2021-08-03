@@ -17,10 +17,6 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-map](https://github.com/sindresorhus/p-map)**: Map over promises concurrently
 - **[p-all](https://github.com/sindresorhus/p-all)**: Run promise-returning & async functions concurrently with optional limited concurrency
 - **[p-queue](https://github.com/sindresorhus/p-queue)**: Promise queue with concurrency control
-- **[p-catch-if](https://github.com/sindresorhus/p-catch-if)**: Conditional promise catch handler
-- **[p-if](https://github.com/sindresorhus/p-if)**: Conditional promise chains
-- **[p-tap](https://github.com/sindresorhus/p-tap)**: Tap into a promise chain without affecting its value or state
-- **[p-log](https://github.com/sindresorhus/p-log)**: Log the value/error of a promise
 - **[p-event](https://github.com/sindresorhus/p-event)**: Promisify an event by waiting for it to be emitted
 - **[p-debounce](https://github.com/sindresorhus/p-debounce)**: Debounce promise-returning & async functions
 - **[p-throttle](https://github.com/sindresorhus/p-throttle)**: Throttle promise-returning & async functions
@@ -57,10 +53,19 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-immediate](https://github.com/sindresorhus/p-immediate)**: Returns a promise resolved in the next event loop - think `setImmediate()`
 - **[p-time](https://github.com/sindresorhus/p-time)**: Measure the time a promise takes to resolve
 - **[p-defer](https://github.com/sindresorhus/p-defer)**: Create a deferred promise
-- **[p-break](https://github.com/sindresorhus/p-break)**: Break out of a promise chain
 - **[p-is-promise](https://github.com/sindresorhus/p-is-promise)**: Check if something is a promise
 - **[p-state](https://github.com/sindresorhus/p-state)**: Inspect the state of a promise
 - **[make-synchronous](https://github.com/sindresorhus/make-synchronous)**: Make an asynchronous function synchronous
+
+### `.then`/`.catch`-based packages
+
+*You should generally avoid using `.then` except in edge cases.*
+
+- **[p-catch-if](https://github.com/sindresorhus/p-catch-if)**: Conditional promise catch handler
+- **[p-if](https://github.com/sindresorhus/p-if)**: Conditional promise chains
+- **[p-tap](https://github.com/sindresorhus/p-tap)**: Tap into a promise chain without affecting its value or state
+- **[p-log](https://github.com/sindresorhus/p-log)**: Log the value/error of a promise
+- **[p-break](https://github.com/sindresorhus/p-break)**: Break out of a promise chain
 
 ## FAQ
 
@@ -81,117 +86,10 @@ const urls = [
 console.log(urls.length);
 //=> 100
 
-const mapper = url => {
-	return fetchStats(url); //=> Promise
-};
+const mapper = url => fetchStats(url); //=> Promise
 
-pMap(urls, mapper, {concurrency: 5}).then(result => {
-	console.log(result);
-	//=> [{url: 'https://sindresorhus.com', stats: {…}}, …]
-});
-```
+const result = await pMap(urls, mapper, {concurrency: 5});
 
-### How can I reduce nesting?
-
-Let's say you want to fetch some data, process it, and return both the data and the processed data.
-
-The common approach would be to nest the promises:
-
-```js
-const getData = id =>
-	Storage
-		.find(id)
-		.then(data => {
-			return process(data).then(result => {
-				return prepare(data, result);
-			});
-		});
-```
-
-But we can take advantage of `Promise.all`:
-
-```js
-const getData = id =>
-	Storage
-		.find(id)
-		.then(data => Promise.all([data, process(data)])
-		.then(([data, result]) => prepare(data, result));
-```
-
-And even simpler with [async functions](https://www.2ality.com/2016/02/async-functions.html): *(Requires Babel or Node.js 8)*
-
-```js
-const getData = async id => {
-	const data = await Storage.find(id);
-	return prepare(data, await process(data));
-};
-```
-
-### What about something like [`Bluebird#spread()`](http://bluebirdjs.com/docs/api/spread.html)?
-
-Bluebird:
-
-```js
-Promise.resolve([1, 2]).spread((one, two) => {
-	console.log(one, two);
-	//=> 1 2
-});
-```
-
-Instead, use [destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
-
-```js
-Promise.resolve([1, 2]).then(([one, two]) => {
-	console.log(one, two);
-	//=> 1 2
-});
-```
-
-### What about something like [`Bluebird.join()`](http://bluebirdjs.com/docs/api/promise.join.html)?
-
-Bluebird:
-
-```js
-Promise.join(p1, p2, p3, (r1, r2, r3) => {
-	// …
-});
-```
-
-Instead, use an [async function](https://jakearchibald.com/2014/es7-async-functions/) and [destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
-
-```js
-const [r1, r2, r3] = await Promise.all([p1, p2, p3]);
-// …
-```
-
-### How do I break out of a promise chain?
-
-You might think you want to break out ("return early") when doing conditional logic in promise chains.
-
-Here you would like to only run the `onlyRunConditional` promises if `conditional` is truthy.
-
-```js
-alwaysRun1()
-	.then(() => alwaysRun2())
-	.then(conditional => conditional || somehowBreakTheChain())
-	.then(() => onlyRunConditional1())
-	.then(() => onlyRunConditional2())
-	.then(() => onlyRunConditional3())
-	.then(() => onlyRunConditional4())
-	.then(() => alwaysRun3());
-```
-
-You could implement the above by [abusing the promise rejection mechanism](https://github.com/sindresorhus/p-break). However, it would be better to branch out the chain instead. Promises can not only be chained, but also nested and unnested.
-
-```js
-const runConditional = () =>
-	onlyRunConditional1()
-		.then(() => onlyRunConditional2())
-		.then(() => onlyRunConditional3())
-		.then(() => onlyRunConditional4());
-
-alwaysRun1()
-	.then(() => alwaysRun2())
-	.then(conditional => conditional && runConditional())
-	.then(() => alwaysRun3());
+console.log(result);
+//=> [{url: 'https://sindresorhus.com', stats: {…}}, …]
 ```
