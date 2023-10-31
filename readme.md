@@ -36,7 +36,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-reflect](https://github.com/sindresorhus/p-reflect)**: Make a promise always fulfill with its actual fulfillment value or rejection reason
 - **[p-filter](https://github.com/sindresorhus/p-filter)**: Filter promises concurrently
 - **[p-reduce](https://github.com/sindresorhus/p-reduce)**: Reduce a list of values using promises into a promise for a value
-- **[p-settle](https://github.com/sindresorhus/p-settle)**: Settle promises concurrently and get their fulfillment value or rejection reason
+- **[p-settle](https://github.com/sindresorhus/p-settle)**: Settle promises concurrently and get their fulfillment value or rejection reason with optional limited concurrency
 - **[p-every](https://github.com/kevva/p-every)**: Test whether all promises passes a testing function
 - **[p-one](https://github.com/kevva/p-one)**: Test whether some promise passes a testing function
 - **[p-map-series](https://github.com/sindresorhus/p-map-series)**: Map over promises serially
