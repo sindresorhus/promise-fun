@@ -37,8 +37,6 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-filter](https://github.com/sindresorhus/p-filter)**: Filter promises concurrently
 - **[p-reduce](https://github.com/sindresorhus/p-reduce)**: Reduce a list of values using promises into a promise for a value
 - **[p-settle](https://github.com/sindresorhus/p-settle)**: Settle promises concurrently and get their fulfillment value or rejection reason with optional limited concurrency
-- **[p-every](https://github.com/kevva/p-every)**: Test whether all promises passes a testing function
-- **[p-one](https://github.com/kevva/p-one)**: Test whether some promise passes a testing function
 - **[p-map-series](https://github.com/sindresorhus/p-map-series)**: Map over promises serially
 - **[p-each-series](https://github.com/sindresorhus/p-each-series)**: Iterate over promises serially
 - **[p-times](https://github.com/sindresorhus/p-times)**: Run promise-returning & async functions a specific number of times concurrently
@@ -74,7 +72,7 @@ I intend to use this space to document my promise modules, useful promise patter
 This is a good use-case for [`p-map`](https://github.com/sindresorhus/p-map). You might ask why you can't just specify an array of promises. Promises represent values of a computation and not the computation itself - they are eager. So by the time `p-map` starts reading the array, all the actions creating those promises have already started running. `p-map` works by executing a promise-returning function in a mapper function. This way the promises are created lazily and can be concurrency limited. Check out [`p-all`](https://github.com/sindresorhus/p-all) instead if you're using different functions to get each promise.
 
 ```js
-const pMap = require('p-map');
+import pMap from 'p-map';
 
 const urls = [
 	'https://sindresorhus.com',
