@@ -16,7 +16,6 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[yoctodelay](https://github.com/sindresorhus/yoctodelay)**: Delay a promise a specified amount of time
 - **[p-map](https://github.com/sindresorhus/p-map)**: Map over promises concurrently
 - **[p-all](https://github.com/sindresorhus/p-all)**: Run promise-returning & async functions concurrently with optional limited concurrency
-- **[p-queue](https://github.com/sindresorhus/p-queue)**: Promise queue with concurrency control
 - **[p-event](https://github.com/sindresorhus/p-event)**: Promisify an event by waiting for it to be emitted
 - **[p-debounce](https://github.com/sindresorhus/p-debounce)**: Debounce promise-returning & async functions
 - **[p-throttle](https://github.com/sindresorhus/p-throttle)**: Throttle promise-returning & async functions
@@ -24,6 +23,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-retry](https://github.com/sindresorhus/p-retry)**: Retry a promise-returning or async function
 - **[p-any](https://github.com/sindresorhus/p-any)**: Wait for any promise to be fulfilled
 - **[p-some](https://github.com/sindresorhus/p-some)**: Wait for a specified number of promises to be fulfilled
+- **[p-mutex](https://github.com/sindresorhus/p-mutex)**: Ensure that only one operation accesses a particular resource at a time
 - **[p-locate](https://github.com/sindresorhus/p-locate)**: Get the first fulfilled promise that satisfies the provided testing function
 - **[p-limit](https://github.com/sindresorhus/p-limit)**: Run multiple promise-returning & async functions with limited concurrency
 - **[p-series](https://github.com/sindresorhus/p-series)**: Run promise-returning & async functions in series
@@ -53,6 +53,7 @@ I intend to use this space to document my promise modules, useful promise patter
 - **[p-defer](https://github.com/sindresorhus/p-defer)**: Create a deferred promise
 - **[p-is-promise](https://github.com/sindresorhus/p-is-promise)**: Check if something is a promise
 - **[p-state](https://github.com/sindresorhus/p-state)**: Inspect the state of a promise
+- **[p-queue](https://github.com/sindresorhus/p-queue)**: Promise queue with concurrency control
 - **[make-synchronous](https://github.com/sindresorhus/make-synchronous)**: Make an asynchronous function synchronous
 
 ### `.then`/`.catch`-based packages
